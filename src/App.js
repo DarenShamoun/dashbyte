@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ChatInterface from './ChatInterface';
 import Navbar from './Navbar';
 import HeroSection from './HeroSection';
 import ServicesSection from './ServicesSection';
@@ -12,6 +13,7 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
+        <Route path="/chat" element={<ChatInterface />} />
         <Route path="/" element={<HeroSection />} />
         <Route path="/about" element={<AboutSection />} />
         <Route path="/services" element={<ServicesSection />} />
