@@ -1,29 +1,40 @@
 const express = require('express');
+const axios = require('axios');
+const bodyParser = require('body-parser');
+const cors = require('cors'); // Import the cors module
+
 const app = express();
-const port = process.env.PORT || 5000;
-const openai = require('openai');
-const cors = require('cors');
+app.use(bodyParser.json());
+app.use(cors()); // Use the cors middleware
 
-openai.apiKey = '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';
-
-app.use(cors());
-app.use(express.json()); 
-
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+const openai = axios.create({
+  baseURL: 'https://api.openai.com',
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer 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` // replace YOUR_OPENAI_API_KEY with your actual key
+  }
 });
 
 app.post('/chat', async (req, res) => {
-    const userMessage = req.body.message;
-    const prompt = 'Tech support: ' + userMessage;
-    const maxTokens = 60;
+  const chatMessages = req.body.messages;
 
-    const response = await openai.Completion.create({
-        engine: 'text-davinci-002',
-        prompt: prompt,
-        max_tokens: maxTokens
+  try {
+    console.log('Creating chat with OpenAI API...');
+    const response = await openai.post('/v1/chat/completions', {
+      model: 'gpt-3.5-turbo',
+      messages: chatMessages
     });
 
-    const aiMessage = response.choices[0].text.trim();
+    console.log('Received response from OpenAI API:', response.data);
+    const aiMessage = response.data.choices[0].message.content;
     res.json({ message: aiMessage });
+  } catch (error) {
+    console.error('An error occurred while creating chat with OpenAI API:', error);
+    console.error('Error details:', error.response.data); // Log error details
+    res.status(500).json({ message: 'An error occurred while processing your request.' });
+  }
 });
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
+
