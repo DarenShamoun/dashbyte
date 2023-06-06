@@ -8,9 +8,25 @@ function ChatInterface() {
     setInput(event.target.value);
   };
 
-  const handleInputSubmit = (event) => {
+  const handleInputSubmit = async (event) => {
     event.preventDefault();
+
+    // Add the user's message to the chat history
     setMessages([...messages, { text: input, sender: 'user' }]);
+
+    // Send the user's message to the server and get the AI's response
+    const response = await fetch('/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: input })
+    });
+    const data = await response.json();
+    const aiMessage = data.message;
+
+    // Add the AI's message to the chat history
+    setMessages(prevMessages => [...prevMessages, { text: aiMessage, sender: 'ai' }]);
+
+    // Clear the input field
     setInput('');
   };
 
