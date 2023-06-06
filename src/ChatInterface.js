@@ -15,11 +15,12 @@ function ChatInterface() {
     setMessages([...messages, { text: input, sender: 'user' }]);
 
     // Send the user's message to the server and get the AI's response
-    const response = await fetch('/chat', {
+    const response = await fetch('http://localhost:5000/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ message: input })
     });
+    
     const data = await response.json();
     const aiMessage = data.message;
 
