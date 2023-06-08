@@ -1,27 +1,18 @@
-.section {
-  padding: 20px;
-  background-color: #eef3f3;
-  color: #48C2C5;
-}
-
-.services {
+.servicesSection {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  justify-content: space-around;
+  padding: 20px;
 }
 
-.card {
-  width: 200px;
+.serviceCard {
+  flex: 0 0 200px;
+  margin: 20px;
   padding: 20px;
-  border: 1px solid #48C2C5;
+  border: 1px solid #ccc;
   border-radius: 10px;
 }
 
-button {
-  background-color: #48C2C5;
-  color: #0e1818;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  cursor: pointer;
+.serviceCard h2 {
+  margin-bottom: 10px;
 }

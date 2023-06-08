@@ -1,30 +1,55 @@
 .chatInterface {
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    padding: 20px;
-    max-width: 600px;
-    margin: 0 auto;
-    margin-bottom: 20px;
-    background-color: #f8f9fa;
-}
-
-.chatInterface p {
-  margin-bottom: 10px;
-}
-
-.chatInterface form {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  background-color: rgba(248, 249, 250, 0.8);
   display: flex;
-  margin-top: 20px;
+  flex-direction: column;
+  min-height: 20vh;
+  max-height: 80vh;
+  overflow: auto;
 }
 
-.chatInterface input {
+.messages {
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+.userMessage {
+  align-self: flex-end;
+  background-color: #548BFE;
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  max-width: 80%;
+}
+
+.aiMessage {
+  align-self: flex-start;
+  background-color: #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  max-width: 80%;
+}
+
+.inputForm {
+  display: flex;
+}
+
+.inputField {
   flex-grow: 1;
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
 }
 
-.chatInterface button {
+.sendButton {
   margin-left: 10px;
   padding: 10px 20px;
   border: none;
@@ -34,21 +59,6 @@
   cursor: pointer;
 }
 
-.chatInterface button:hover {
+.sendButton:hover {
   background-color: #48C2C5;
 }
-
-.message {
-  margin-bottom: 10px;
-}
-
-.message.user {
-  text-align: right;
-  color: #548BFE;
-}
-
-.message.ai {
-  text-align: left;
-  color: #48C2C5;
-}
-  

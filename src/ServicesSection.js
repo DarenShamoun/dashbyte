@@ -3,15 +3,23 @@ import styles from './ServicesSection.module.css';
 
 function ServicesSection() {
   return (
-    <section className={styles.section}>
-      <h2>Our Services</h2>
-      <div className={styles.services}>
-        <div className={styles.card}>
-          <h3>Service 1</h3>
-          <p>Brief description of Service 1...</p>
-          <button>Learn More</button>
-        </div>
-        {/* Add more cards as needed */}
+    <section className={styles.servicesSection}>
+      <h1>Our Services</h1>
+      <div className={styles.serviceCard}>
+        <h2>Software Development</h2>
+        <p>Our team of experienced developers can help you build robust and scalable software solutions tailored to your business needs.</p>
+      </div>
+      <div className={styles.serviceCard}>
+        <h2>PC Building</h2>
+        <p>With a long history in PC building, we can build computers of all types to suit your specific needs, whether for gaming, work, or home use.</p>
+      </div>
+      <div className={styles.serviceCard}>
+        <h2>IT Services</h2>
+        <p>Our IT services leverage the power of AI to provide efficient and effective solutions for your business.</p>
+      </div>
+      <div className={styles.serviceCard}>
+        <h2>Website Design</h2>
+        <p>We design websites of all types, ensuring they are user-friendly, responsive, and visually appealing.</p>
       </div>
     </section>
   );

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from './ChatInterface.module.css';
 
 function ChatInterface() {
   const [messages, setMessages] = useState([]);
@@ -45,15 +46,17 @@ function ChatInterface() {
   
 
   return (
-    <div>
-      <div>
+    <div className={styles.chatInterface}>
+      <div className={styles.messages}>
         {messages.map((message, index) => (
-          <p key={index}>{message.sender}: {message.text}</p>
+          <p key={index} className={message.sender === 'user' ? styles.userMessage : styles.aiMessage}>
+            {message.text}
+          </p>
         ))}
       </div>
-      <form onSubmit={handleInputSubmit}>
-        <input type="text" value={input} onChange={handleInputChange} />
-        <button type="submit">Send</button>
+      <form onSubmit={handleInputSubmit} className={styles.inputForm}>
+        <input type="text" value={input} onChange={handleInputChange} className={styles.inputField} />
+        <button type="submit" className={styles.sendButton}>Send</button>
       </form>
     </div>
   );

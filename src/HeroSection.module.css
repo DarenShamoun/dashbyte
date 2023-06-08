@@ -5,7 +5,7 @@
   align-items: center;
   position: relative;
   padding: 50px 0;
-  background-image: url('C:\Users\daren\source\repos\dashbyte\public\4kLogoOnly.png');
+  background-image: url('./assets/4kLogoOnly.png');
   background-size: cover;
   background-position: center;
 }
