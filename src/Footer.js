@@ -2,7 +2,7 @@ import React from 'react';
 import facebookIcon from './assets/facebook.svg';
 import twitterIcon from './assets/twitter.svg';
 import instagramIcon from './assets/instagram.svg';
-import styles from './Footer.module.css';
+import styles from './footer.module.css';
 
 function Footer() {
   return (

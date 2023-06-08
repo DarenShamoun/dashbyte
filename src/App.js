@@ -1,14 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import ChatInterface from './ChatInterface';
-import Navbar from './Navbar';
-import HeroSection from './HeroSection';
-import ServicesSection from './ServicesSection';
-import AboutSection from './AboutSection';
-import ContactSection from './ContactSection';
-import Footer from './Footer';
-import PCBuilder from './PCBuilder';
-import NotFound from './NotFound';
+import ChatInterface from './chatInterface';
+import Navbar from './navbar';
+import HeroSection from './heroSection';
+import ServicesSection from './servicesSection';
+import AboutSection from './aboutSection';
+import ContactSection from './contactSection';
+import Footer from './footer';
+import PCBuilder from './pcBuilder';
+import NotFound from './notFound';
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
         <Route path="/services" element={<ServicesSection />} />
         <Route path="/contact" element={<ContactSection />} />
         <Route path="/pc-builder" element={<PCBuilder />} />
-        <Route path="*" element={<NotFound />} /> {/* This should be the last route */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </Router>

@@ -4,7 +4,7 @@ import facebookIcon from './assets/facebook.svg';
 import twitterIcon from './assets/twitter.svg';
 import instagramIcon from './assets/instagram.svg';
 import logo from './assets/4k-LogoTransparent.png';
-import styles from './Navbar.module.css';
+import styles from './navbar.module.css';
 
 function Navbar() {
   return (
