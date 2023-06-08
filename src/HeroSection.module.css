@@ -3,11 +3,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url('C:\Users\daren\source\repos\dashbyte\public\4kLogoOnly.png') no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
+  position: relative;
+  padding: 50px 0;
+  background-image: url('C:\Users\daren\source\repos\dashbyte\public\4kLogoOnly.png');
   background-size: cover;
+  background-position: center;
 }
 
 .chatInterface {
