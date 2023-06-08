@@ -1,9 +1,11 @@
+/* Navbar */
 .navbar {
-  background-color: #343a40;
-  padding: 20px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background-color: #000000;
+  color: #48C2C5;
+  /* Add gradient effect to the text */
+  background: linear-gradient(to right, #48C2C5, #548BFE);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .logo {

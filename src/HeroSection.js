@@ -1,6 +1,6 @@
 import React from 'react';
 import ChatInterface from './ChatInterface'; // Import the chat interface component
-import styles from './HeroSection.css';
+import styles from './HeroSection.module.css';
 
 const HeroSection = () => {
   return (
