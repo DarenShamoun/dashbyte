@@ -8,6 +8,7 @@ import AboutSection from './AboutSection';
 import ContactSection from './ContactSection';
 import Footer from './Footer';
 import PCBuilder from './PCBuilder';
+import NotFound from './NotFound';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/services" element={<ServicesSection />} />
         <Route path="/contact" element={<ContactSection />} />
         <Route path="/pc-builder" element={<PCBuilder />} />
+        <Route path="*" element={<NotFound />} /> {/* This should be the last route */}
       </Routes>
       <Footer />
     </Router>
