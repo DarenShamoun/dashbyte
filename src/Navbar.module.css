@@ -1,11 +1,10 @@
-/* Navbar */
 .navbar {
-  background-color: #000000;
-  color: #48C2C5;
-  /* Add gradient effect to the text */
-  background: linear-gradient(to right, #48C2C5, #548BFE);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background: linear-gradient(90deg, #48C2C5 0%, #548BFE 100%);
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
 }
 
 .logo {
@@ -18,13 +17,13 @@
   gap: 20px;
 }
 
-.link {
+.navLinks a {
   color: #fff;
   font-size: 1.2em;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.link:hover {
+.navLinks a:hover {
   color: #61dafb;
 }

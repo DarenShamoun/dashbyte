@@ -1,0 +1,14 @@
+.aboutSection {
+    padding: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #343a40;
+    line-height: 1.6;
+  }
+  
+  .aboutSection h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #48C2C5;
+  }
+  

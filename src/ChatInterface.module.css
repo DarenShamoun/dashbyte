@@ -1,8 +1,49 @@
-.chat-interface {
-    background-color: rgba(0, 0, 0, 0.7); /* Black background with 70% opacity */
-    color: #ffffff;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
+.chatInterface {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+  }
+  
+  .chatInterface form {
+    display: flex;
+    margin-top: 20px;
+  }
+  
+  .chatInterface input {
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .chatInterface button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #548BFE;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .chatInterface button:hover {
+    background-color: #48C2C5;
+  }
+  
+  .message {
+    margin-bottom: 10px;
+  }
+  
+  .message.user {
+    text-align: right;
+    color: #548BFE;
+  }
+  
+  .message.ai {
+    text-align: left;
+    color: #48C2C5;
+  }
+  

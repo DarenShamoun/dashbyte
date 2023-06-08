@@ -4,14 +4,13 @@ import styles from './HeroSection.module.css';
 
 const HeroSection = () => {
   return (
-    <div className="hero-section">
-      {/* Add your hero section content here */}
-      
-      <div className="chatbot">
-        <ChatInterface /> {/* Include the chat interface component */}
+    <div className={styles.heroSection}>
+      <div className={styles.chatInterface}>
+        <ChatInterface />
       </div>
     </div>
   );
 };
+
 
 export default HeroSection;
