@@ -30,13 +30,14 @@
   color: #48C2C5;
 }
 
-.socialMedia {
+.socialLinks {
   display: flex;
-   gap: 10px;
- }
- 
- .socialMedia a {
-   color: #fff;
-   font-size: 1.5em;
- }
+  gap: 10px;
+}
+
+.socialLinks img {
+  height: 24px;
+  width: 24px;
+}
+
  

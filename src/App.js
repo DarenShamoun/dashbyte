@@ -7,6 +7,7 @@ import ServicesSection from './ServicesSection';
 import AboutSection from './AboutSection';
 import ContactSection from './ContactSection';
 import Footer from './Footer';
+import PCBuilder from './PCBuilder';
 
 function App() {
   return (
