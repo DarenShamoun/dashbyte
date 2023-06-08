@@ -1,13 +1,17 @@
 import React from 'react';
+import ChatInterface from './ChatInterface'; // Import the chat interface component
+import styles from './HeroSection.css';
 
-function HeroSection() {
+const HeroSection = () => {
   return (
-    <section>
-      <h1>Welcome to Our Website</h1>
-      <p>Our mission is to provide...</p>
-      <button>Learn More</button>
-    </section>
+    <div className="hero-section">
+      {/* Add your hero section content here */}
+      
+      <div className="chatbot">
+        <ChatInterface /> {/* Include the chat interface component */}
+      </div>
+    </div>
   );
-}
+};
 
 export default HeroSection;
