@@ -1,19 +1,19 @@
 .heroSection {
-  height: 100vh;
+  height: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  padding: 50px 0;
+  padding: 0 0; /* Adjust this value to your liking */
   background-image: url('./assets/4kLogoOnly.png');
   background-size: cover;
   background-position: center;
 }
 
 .chatInterface {
-  max-width: 800px;
+  max-width: 600px;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(0, 0, 0, 0.6); /* Adjust the alpha channel to your liking */
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);

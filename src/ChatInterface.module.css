@@ -2,10 +2,10 @@
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 20px;
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
   margin-bottom: 20px;
-  background-color: rgba(248, 249, 250, 0.8);
+  background-color: rgba(103, 104, 105, 0.8);
   display: flex;
   flex-direction: column;
   min-height: 20vh;

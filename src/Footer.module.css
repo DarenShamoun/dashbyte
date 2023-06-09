@@ -4,6 +4,7 @@
   color: #fff;
   position: sticky;
   bottom: 0;
+  height: 100px; /* adjust this value as needed */
   display: flex;
   justify-content: space-between;
   align-items: center;

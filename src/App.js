@@ -14,15 +14,17 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <Routes>
-        <Route path="/chat" element={<ChatInterface />} />
-        <Route path="/" element={<HeroSection />} />
-        <Route path="/about" element={<AboutSection />} />
-        <Route path="/services" element={<ServicesSection />} />
-        <Route path="/contact" element={<ContactSection />} />
-        <Route path="/pc-builder" element={<PCBuilder />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path="/chat" element={<ChatInterface />} />
+          <Route path="/" element={<HeroSection />} />
+          <Route path="/about" element={<AboutSection />} />
+          <Route path="/services" element={<ServicesSection />} />
+          <Route path="/contact" element={<ContactSection />} />
+          <Route path="/pc-builder" element={<PCBuilder />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
       <Footer />
     </Router>
   );
