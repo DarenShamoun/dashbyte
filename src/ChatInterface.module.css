@@ -2,7 +2,8 @@
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 20px;
-  max-width: 800px;
+  min-width: 60vw;
+  max-width: 80vw;
   margin: 0 auto;
   margin-bottom: 20px;
   background-color: rgba(103, 104, 105, 0.8);
@@ -19,23 +20,26 @@
   margin-bottom: 20px;
 }
 
+.userMessage, .aiMessage {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin-bottom: 10px;
+  max-width: 80%;
+  border-radius: 10px;
+}
+
 .userMessage {
   align-self: flex-end;
   background-color: #548BFE;
   color: #fff;
-  border-radius: 10px;
-  padding: 10px;
-  margin-bottom: 10px;
-  max-width: 80%;
+  justify-content: flex-end;
 }
 
 .aiMessage {
   align-self: flex-start;
   background-color: #ccc;
-  border-radius: 10px;
-  padding: 10px;
-  margin-bottom: 10px;
-  max-width: 80%;
+  justify-content: flex-start;
 }
 
 .inputForm {
@@ -60,5 +64,5 @@
 }
 
 .sendButton:hover {
-  background-color: #48C2C5;
+  background-color: #48C2C2;
 }

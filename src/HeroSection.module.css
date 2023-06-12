@@ -10,12 +10,3 @@
   background-position: center;
 }
 
-.chatInterface {
-  max-width: 600px;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.6); /* Adjust the alpha channel to your liking */
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-}
-
