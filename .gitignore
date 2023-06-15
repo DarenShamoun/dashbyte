@@ -22,3 +22,10 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.vs/ProjectSettings.json
+.vs/slnx.sqlite
+.vs/dashbyte/FileContentIndex/52237614-f69d-4c58-b25d-4581b9f8ab83.vsidx
+.vs/dashbyte/FileContentIndex/read.lock
+.vs/dashbyte/v17/.wsuo
+.gitignore
+.vs/VSWorkspaceState.json
