@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const axios = require('axios');
 const bodyParser = require('body-parser');
@@ -11,7 +12,7 @@ const openai = axios.create({
   baseURL: 'https://api.openai.com',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': `Bearer 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` // replace YOUR_OPENAI_API_KEY with your actual key
+    'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
   }
 });
 
