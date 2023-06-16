@@ -12,11 +12,10 @@ function Navbar() {
       <Link to="/"><img src={logo} alt="Logo" className={styles.logo} /></Link>
       <ul className={styles.navLinks}>
         <li><Link to="/">Home</Link></li>
-        <li><Link to="/chat">Chat</Link></li>
-        <li><Link to="/about">About</Link></li>
-        <li><Link to="/services">Services</Link></li>
-        <li><Link to="/contact">Contact</Link></li>
         <li><Link to="/pc-builder">PC Builder</Link></li>
+        <li><Link to="/services">Services</Link></li>
+        <li><Link to="/about">About</Link></li>
+        <li><Link to="/contact">Contact</Link></li>
       </ul>
       <div className={styles.socialLinks}>
         <a href="https://www.facebook.com/dashbyte/" target="_blank" rel="noreferrer">

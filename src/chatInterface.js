@@ -1,15 +1,21 @@
 import React, { useState } from 'react';
 import chatInterfaceStyles from './chatInterface.module.css';
 
-function ChatInterface() {
+function ChatInterface({ selectedParts }) {
   const [messages, setMessages] = useState([]);
+
+  // This function retrieves the current context
+  const getCurrentContext = () => {
+    // Convert the selectedParts array to a string
+    return JSON.stringify(selectedParts);
+  };
 
   const handleInputSubmit = async (event) => {
     event.preventDefault();
   
     // Get the input value from the form event
     const input = event.target.elements.input.value;
-
+  
     // Add the user's message to the chat history
     setMessages([...messages, { text: input, sender: 'user' }]);
   
@@ -25,11 +31,14 @@ function ChatInterface() {
       }
     ];
   
-    // Send the messages to the server and get the AI's response
+    // Get the current context (this will depend on your application)
+    const context = JSON.stringify(selectedParts);
+  
+    // Send the messages and context to the server and get the AI's response
     const response = await fetch('http://localhost:5000/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ messages: chatMessages })
+      body: JSON.stringify({ messages: chatMessages, context: context })
     });
   
     const data = await response.json();
