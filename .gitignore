@@ -29,5 +29,4 @@ yarn-error.log*
 .vs/dashbyte/v17/.wsuo
 .gitignore
 .vs/VSWorkspaceState.json
-server/.env
 server/openAI.env
