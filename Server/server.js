@@ -50,6 +50,7 @@ app.get('/api/parts/:part', async (req, res) => {
 app.post('/chat', async (req, res) => {
   const chatMessages = req.body.messages;
   const context = req.body.context;
+  const selectedParts = req.body.selectedParts;
 
   try 
   {
@@ -57,7 +58,7 @@ app.post('/chat', async (req, res) => {
     const response = await openai.post('/v1/chat/completions', 
     {
       model: 'gpt-3.5-turbo',
-      messages: chatMessages,
+      messages: [...chatMessages, { role: 'system', content: `The user has selected the following parts: ${JSON.stringify(selectedParts)}` }],
       context: context // pass the context to the AI
     });
 
@@ -72,6 +73,7 @@ app.post('/chat', async (req, res) => {
     res.status(500).json({ message: 'An error occurred while processing your request.', error: error.message });
   }
 });
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));

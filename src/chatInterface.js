@@ -35,13 +35,12 @@ function ChatInterface({ selectedParts }) {
   
     // Get the current context (this will depend on your application)
     const context = getCurrentContext();
-
   
-    // Send the messages and context to the server and get the AI's response
+    // Send the messages, context, and selected parts to the server and get the AI's response
     const response = await fetch(process.env.REACT_APP_SERVER_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ messages: chatMessages, context: context })
+      body: JSON.stringify({ messages: chatMessages, context: context, selectedParts: selectedParts })
     });    
   
     const data = await response.json();
@@ -56,6 +55,8 @@ function ChatInterface({ selectedParts }) {
     // Clear the input field
     event.target.elements.input.value = '';
   };
+  
+
   
 
   return (
