@@ -69,9 +69,10 @@ app.post('/chat', async (req, res) => {
   {
     console.error('An error occurred while creating chat with OpenAI API:', error);
     console.error('Error details:', error.response.data); // Log error details
-    res.status(500).json({ message: 'An error occurred while processing your request.' });
+    res.status(500).json({ message: 'An error occurred while processing your request.', error: error.message });
   }
 });
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));

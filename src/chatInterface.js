@@ -3,7 +3,6 @@ import chatInterfaceStyles from './chatInterface.module.css';
 
 console.log(process.env.REACT_APP_SERVER_URL);
 
-
 function ChatInterface({ selectedParts }) {
   const [messages, setMessages] = useState([]);
 
@@ -46,6 +45,9 @@ function ChatInterface({ selectedParts }) {
     });    
   
     const data = await response.json();
+    if (response.status === 500) {
+      console.error('Server error:', data.error);
+    }
     const aiMessage = data.message;
   
     // Add the AI's message to the chat history
