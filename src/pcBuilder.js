@@ -10,6 +10,8 @@ function PcBuilder() {
   const [hdd, setHdd] = useState([]);
   const [usb, setUsb] = useState([]);
   const [selectedParts, setSelectedParts] = useState([]);
+  const [chatMessages, setChatMessages] = useState([]);
+  const [userMessage, setUserMessage] = useState("");
 
   useEffect(() => {
     const fetchParts = async (partType, setPartState) => {
@@ -21,17 +23,32 @@ function PcBuilder() {
       }
     };
   
-    fetchParts('cpu', setCpu);
-    fetchParts('gpu', setGpu);
-    fetchParts('ram', setRam);
-    fetchParts('ssd', setSsd);
-    fetchParts('hdd', setHdd);
-    fetchParts('usb', setUsb);
+    fetchParts('CPU', setCpu);
+    fetchParts('GPU', setGpu);
+    fetchParts('RAM', setRam);
+    fetchParts('SSD', setSsd);
+    fetchParts('HDD', setHdd);
+    fetchParts('USB', setUsb);    
   }, []);
   
 
   const onPartSelect = (part) => {
     setSelectedParts(prevParts => [...prevParts, part]);
+  };
+
+  const onChatSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await axios.post('http://localhost:5000/chat', {
+        messages: [...chatMessages, { role: 'user', content: userMessage }],
+        selectedParts: selectedParts
+      });
+
+      setChatMessages(prevMessages => [...prevMessages, { role: 'user', content: userMessage }, { role: 'ai', content: response.data.message }]);
+      setUserMessage("");
+    } catch (err) {
+      console.error(`Failed to create chat: ${err}`);
+    }
   };
 
   return (
@@ -106,6 +123,18 @@ function PcBuilder() {
           </li>
         ))}
       </ul>
+      <h2>Chat:</h2>
+      <div className={styles.chatBox}>
+        {chatMessages.map((message, index) => (
+          <p key={index} className={message.role === 'ai' ? styles.aiMessage : styles.userMessage}>
+            {message.role.toUpperCase()}: {message.content}
+          </p>
+        ))}
+      </div>
+      <form onSubmit={onChatSubmit}>
+        <input type="text" value={userMessage} onChange={(e) => setUserMessage(e.target.value)} />
+        <button type="submit">Send</button>
+      </form>
     </div>
   );
 }

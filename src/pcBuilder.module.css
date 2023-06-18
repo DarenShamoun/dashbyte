@@ -26,3 +26,19 @@
     margin-bottom: 10px;
   }
   
+  .chatBox {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    height: 300px;
+    overflow-y: auto;
+  }
+  
+  .userMessage {
+    color: blue;
+  }
+  
+  .aiMessage {
+    color: green;
+  }
+  
