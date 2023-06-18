@@ -29,6 +29,7 @@ function App() {
           <Route path="/services" element={<ServicesSection />} />
           <Route path="/contact" element={<ContactSection />} />
           <Route path="/pc-builder" element={<PCBuilder selectedParts={selectedParts} onPartSelect={handlePartSelect} />} />
+          <Route path="/chat" element={<ChatInterface selectedParts={selectedParts} />} /> {/* Add this line */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
@@ -38,3 +39,4 @@ function App() {
 }
 
 export default App;
+

@@ -32,14 +32,15 @@ function ChatInterface({ selectedParts }) {
     ];
   
     // Get the current context (this will depend on your application)
-    const context = JSON.stringify(selectedParts);
+    const context = getCurrentContext();
+
   
     // Send the messages and context to the server and get the AI's response
-    const response = await fetch('http://localhost:5000/chat', {
+    const response = await fetch(process.env.REACT_APP_SERVER_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ messages: chatMessages, context: context })
-    });
+    });    
   
     const data = await response.json();
     const aiMessage = data.message;

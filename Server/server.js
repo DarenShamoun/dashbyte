@@ -23,16 +23,28 @@ const openai = axios.create({
 const uri = "mongodb://localhost:27017";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
+let db;
+
 client.connect(err => {
   if (err) {
     console.error('An error occurred while connecting to MongoDB:', err);
-    return;
+    process.exit(1); // Exit the application if there's an error
   }
 
   console.log('Connected to MongoDB');
   
-  // You can create your database and collections here
-  // You can also insert your data into the collections here
+  db = client.db('user_benchmarks'); // Connect to the 'user_benchmarks' database
+});
+
+app.get('/api/parts/:part', async (req, res) => {
+  try {
+    const collection = db.collection(`${req.params.part}_UserBenchmarks`);
+    const parts = await collection.find().toArray();
+    res.json(parts);
+  } catch (err) {
+    console.error('An error occurred while fetching parts:', err);
+    res.status(500).json({ message: 'An error occurred while processing your request.' });
+  }
 });
 
 app.post('/chat', async (req, res) => {
