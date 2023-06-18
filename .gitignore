@@ -30,3 +30,4 @@ yarn-error.log*
 .gitignore
 .vs/VSWorkspaceState.json
 server/.env
+server/openAI.env
