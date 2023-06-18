@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import chatInterfaceStyles from './chatInterface.module.css';
 
+console.log(process.env.REACT_APP_SERVER_URL);
+
+
 function ChatInterface({ selectedParts }) {
   const [messages, setMessages] = useState([]);
 
