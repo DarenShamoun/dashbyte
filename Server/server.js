@@ -10,6 +10,14 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors()); // Use the cors middleware
 
+app.use((req, res, next) => {
+  if (!db) {
+    res.status(503).json({ message: 'Server is starting up. Please try again later.' });
+  } else {
+    next();
+  }
+});
+
 const openai = axios.create({
   baseURL: 'https://api.openai.com',
   headers: 
@@ -46,6 +54,7 @@ app.get('/api/parts/:part', async (req, res) => {
     res.status(500).json({ message: 'An error occurred while processing your request.' });
   }
 });
+
 
 app.post('/chat', async (req, res) => {
   const chatMessages = req.body.messages;

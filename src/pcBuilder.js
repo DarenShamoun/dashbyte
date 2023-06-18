@@ -12,26 +12,15 @@ function PcBuilder() {
   const [selectedParts, setSelectedParts] = useState([]);
 
   useEffect(() => {
-    const fetchParts = async () => {
+    const fetchParts = async (partType, setPartState) => {
       try {
-        const cpu = await axios.get('http://localhost:5000/api/parts/cpu');
-        setCpu(cpu.data);
-        const gpu = await axios.get('http://localhost:5000/api/parts/gpu');
-        setGpu(gpu.data);
-        const ram = await axios.get('http://localhost:5000/api/parts/ram');
-        setRam(ram.data);
-        const ssd = await axios.get('http://localhost:5000/api/parts/ssd');
-        setSsd(ssd.data);
-        const hdd = await axios.get('http://localhost:5000/api/parts/hdd');
-        setHdd(hdd.data);
-        const usb = await axios.get('http://localhost:5000/api/parts/usb');
-        setUsb(usb.data);
+        const response = await axios.get(`http://localhost:5000/api/parts/${partType}`);
+        setPartState(response.data);
       } catch (err) {
         console.error(`Failed to fetch parts: ${err}`);
       }
     };
-    
-    
+  
     fetchParts('cpu', setCpu);
     fetchParts('gpu', setGpu);
     fetchParts('ram', setRam);
@@ -39,6 +28,7 @@ function PcBuilder() {
     fetchParts('hdd', setHdd);
     fetchParts('usb', setUsb);
   }, []);
+  
 
   const onPartSelect = (part) => {
     setSelectedParts(prevParts => [...prevParts, part]);
