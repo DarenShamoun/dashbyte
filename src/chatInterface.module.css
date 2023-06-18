@@ -21,25 +21,23 @@
 }
 
 .userMessage, .aiMessage {
-  display: flex;
+  display: inline-block; /* Make the width of the boxes only as wide as the content */
   flex-direction: column;
-  padding: 10px;
+  padding: 5px;
   margin-bottom: 10px;
   max-width: 80%;
   border-radius: 10px;
 }
 
 .userMessage {
-  align-self: flex-end;
   background-color: #548BFE;
   color: #fff;
-  justify-content: flex-end;
+  text-align: right; /* Align the text to the right */
 }
 
 .aiMessage {
-  align-self: flex-start;
   background-color: #ccc;
-  justify-content: flex-start;
+  text-align: left; /* Align the text to the left */
 }
 
 .inputForm {
@@ -65,4 +63,9 @@
 
 .sendButton:hover {
   background-color: #48C2C2;
+}
+
+.timestamp {
+  font-size: 0.8em;
+  color: #888;
 }
