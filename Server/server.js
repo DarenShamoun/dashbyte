@@ -7,7 +7,7 @@ const cors = require('cors');
 const { connectToMongoDB, db, client } = require('./db');
 const partsRoute = require('./routes/parts');
 const chatRoute = require('./routes/chat');
-const checkDbConnection = require('./middlewares/checkDbConnection');
+const checkDbConnection = require('./middlewares/check-db-connection');
 const shutdown = require('./shutdown');
 
 const app = express();
