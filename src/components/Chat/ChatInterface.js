@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom'; // Import useLocation
 import chatInterfaceStyles from './chat-interface.module.css';
 import logo from '../../assets/4kLogoOnly.png';
+import ChatBox from './ChatBox'; // Import ChatBox
 
 function ChatInterface({ home, selectedParts, messages, setMessages }) { // Add 'messages' and 'setMessages' to the props
   const [aiIsTyping, setAiIsTyping] = useState(false); // New state for AI typing
@@ -76,30 +77,13 @@ function ChatInterface({ home, selectedParts, messages, setMessages }) { // Add 
         <div className={chatInterfaceStyles.chatInterface}>
           <div className={chatInterfaceStyles.chatInterfaceHome}> {/* Use chatInterfaceHome class */}
             <div className={chatInterfaceStyles.chatInterface}>
-              <div className={chatInterfaceStyles.messages}>
-              {messages.map((message, index) => (
-                <div key={index} style={{width: '100%', display: 'flex', justifyContent: message.sender === 'user' ? 'flex-end' : 'flex-start'}}>
-                  <div className={message.sender === 'user' ? chatInterfaceStyles.userMessage : chatInterfaceStyles.aiMessage}>
-                    <strong>{message.sender.toUpperCase()}: </strong>
-                    <p>{message.text}</p>
-                    <span className={chatInterfaceStyles.timestamp}>{message.timestamp}</span>
-                  </div>
-                </div>
-              ))}
-                {/* Add this line */}
-                {aiIsTyping && <div className={chatInterfaceStyles.aiTyping}>AI is typing...</div>}
-              </div>
-              <form onSubmit={handleInputSubmit} className={chatInterfaceStyles.inputForm}>
-                <input name="input" type="text" className={chatInterfaceStyles.inputField} />
-                <button type="submit" className={chatInterfaceStyles.sendButton}>Send</button>
-              </form>
+              <ChatBox messages={messages} aiIsTyping={aiIsTyping} handleInputSubmit={handleInputSubmit} /> {/* Use the ChatBox component here */}
             </div>
           </div>
         </div>
       </div>
     </div>
   );
-
 }
 
 export default ChatInterface;

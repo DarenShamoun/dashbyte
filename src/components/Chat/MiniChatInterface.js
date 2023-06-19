@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom'; // Import useLocation
 import chatInterfaceStyles from './chat-interface.module.css';
+import ChatBox from './ChatBox'; // Import ChatBox
 
 function MiniChatInterface({ selectedParts, messages, setMessages }) { // Add 'messages' and 'setMessages' to the props
   const [aiIsTyping, setAiIsTyping] = useState(false); // New state for AI typing
@@ -75,13 +76,7 @@ function MiniChatInterface({ selectedParts, messages, setMessages }) { // Add 'm
 
   return (
     <div className={chatInterfaceStyles.miniChatInterface}>
-      <div className={chatInterfaceStyles.messages}>
-        {/* Your existing code... */}
-      </div>
-      <form onSubmit={handleInputSubmit} className={chatInterfaceStyles.inputForm}>
-        <input name="input" type="text" className={chatInterfaceStyles.inputField} />
-        <button type="submit" className={chatInterfaceStyles.sendButton}>Send</button>
-      </form>
+      <ChatBox messages={messages} aiIsTyping={aiIsTyping} handleInputSubmit={handleInputSubmit} /> {/* Use the ChatBox component here */}
     </div>
   );
 }

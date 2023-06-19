@@ -14,6 +14,8 @@ import HomePage from './components/Home/Home';
 function App() {
   // The selected parts (initially empty)
   const [selectedParts, setSelectedParts] = useState([]);
+
+  // The chat messages (initially empty)
   const [messages, setMessages] = useState([]); // Add this line
 
   const handlePartSelect = (part) => {
@@ -28,14 +30,13 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/" element={<ChatInterface home selectedParts={selectedParts} messages={messages} setMessages={setMessages} />} /> {/* Pass the 'messages' and 'setMessages' props here */}
             <Route path="/about" element={<AboutSection />} />
             <Route path="/services" element={<ServicesSection />} />
             <Route path="/contact" element={<ContactSection />} />
             <Route path="/pc-builder" element={<PCBuilder selectedParts={selectedParts} onPartSelect={handlePartSelect} />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-          <MiniChatInterface selectedParts={selectedParts} messages={messages} setMessages={setMessages} /> {/* Pass the 'messages' and 'setMessages' props here */}
+          <MiniChatInterface selectedParts={selectedParts} messages={messages} setMessages={setMessages} /> {/* Pass the messages and setMessages to MiniChatInterface */}
         </main>
         <Footer />
       </Router>
