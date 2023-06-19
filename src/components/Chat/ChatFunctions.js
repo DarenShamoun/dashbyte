@@ -4,6 +4,7 @@ export const getCurrentContext = (selectedParts) => {
 };
 
 export const handleInputSubmit = async (event, messages, setMessages, selectedParts, setAiIsTyping) => {
+  console.log('messages:', messages);
   event.preventDefault();
 
   // Get the input value from the form event
