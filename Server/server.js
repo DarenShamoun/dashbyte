@@ -5,9 +5,9 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const { connectToMongoDB, db, client } = require('./db');
-
 const partsRoute = require('./routes/parts');
 const chatRoute = require('./routes/chat');
+const shutdown = require('./shutdown');
 
 const app = express();
 app.use(bodyParser.json());
@@ -29,12 +29,4 @@ chatRoute(app);
 const PORT = process.env.PORT || 5000;
 const server = app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
 
-// Close the MongoDB connection when the server shuts down
-process.on('SIGINT', async () => {
-  console.log('Server is shutting down...');
-  await client.close();
-  server.close(() => {
-    console.log('Server has shut down');
-    process.exit(0);
-  });
-});
+shutdown(server, client);
