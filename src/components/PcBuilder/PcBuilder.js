@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import styles from './pcBuilder.module.css'; // Import the styles
+import styles from './pc-builder.module.css'; // Import the styles
 
 function PcBuilder() {
   const [cpu, setCpu] = useState([]);

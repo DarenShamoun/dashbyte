@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom'; // Import useLocation
-import chatInterfaceStyles from './chatInterface.module.css';
+import chatInterfaceStyles from './chat-interface.module.css';
 
 function MiniChatInterface({ selectedParts }) {
   const [messages, setMessages] = useState([]);

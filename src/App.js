@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import ChatInterface from './chatInterface';
-import MiniChatInterface from './miniChatInterface';
-import Navbar from './navbar';
-import ServicesSection from './servicesSection';
-import AboutSection from './aboutSection';
-import ContactSection from './contactSection';
-import Footer from './footer';
-import PCBuilder from './pcBuilder';
-import NotFound from './notFound';
-import HomePage from './homePage';
+import ChatInterface from './ChatInterface';
+import MiniChatInterface from './MiniChatInterface';
+import Navbar from './Navbar';
+import ServicesSection from './ServicesSection';
+import AboutSection from './AboutSection';
+import ContactSection from './ContactSection';
+import Footer from './Footer';
+import PCBuilder from './components/PcBuilder/PcBuilder';
+import NotFound from './NotFound';
+import HomePage from './components/Home/Home';
 import { useLocation } from 'react-router-dom'; // Import useLocation
 
 function App() {
