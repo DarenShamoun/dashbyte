@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { handleInputSubmit } from './components/Chat/ChatFunctions'; // Import handleInputSubmit
 import ChatInterface from './components/Chat/ChatInterface';
 import MiniChatInterface from './components/Chat/MiniChatInterface';
 import Navbar from './components/Navbar/Navbar';
@@ -36,7 +37,8 @@ function App() {
             <Route path="/pc-builder" element={<PCBuilder selectedParts={selectedParts} onPartSelect={handlePartSelect} />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-          <MiniChatInterface selectedParts={selectedParts} messages={messages} setMessages={setMessages} /> {/* Pass the messages and setMessages to MiniChatInterface */}
+          <ChatInterface handleInputSubmit={handleInputSubmit} selectedParts={selectedParts} messages={messages} setMessages={setMessages} /> {/* Pass handleInputSubmit to ChatInterface */}
+          <MiniChatInterface handleInputSubmit={handleInputSubmit} selectedParts={selectedParts} messages={messages} setMessages={setMessages} /> {/* Pass handleInputSubmit to MiniChatInterface */}
         </main>
         <Footer />
       </Router>
