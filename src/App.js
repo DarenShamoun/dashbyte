@@ -10,7 +10,6 @@ import Footer from './Footer';
 import PCBuilder from './components/PcBuilder/PcBuilder';
 import NotFound from './NotFound';
 import HomePage from './components/Home/Home';
-import { useLocation } from 'react-router-dom'; // Import useLocation
 
 function App() {
   // The selected parts (initially empty)
@@ -27,8 +26,7 @@ function App() {
         <Navbar />
         <main>
           <Routes>
-          <Route path="/" element={<HomePage />} />
-            <Route path="/" element={<ChatInterface home selectedParts={selectedParts} />} /> {/* Pass the 'home' prop here */}
+            <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutSection />} />
             <Route path="/services" element={<ServicesSection />} />
             <Route path="/contact" element={<ContactSection />} />
