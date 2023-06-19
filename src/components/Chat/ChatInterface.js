@@ -3,8 +3,7 @@ import { useLocation } from 'react-router-dom'; // Import useLocation
 import chatInterfaceStyles from './chat-interface.module.css';
 import logo from '../../assets/4kLogoOnly.png';
 
-function ChatInterface({ home, selectedParts }) {
-  const [messages, setMessages] = useState([]);
+function ChatInterface({ home, selectedParts, messages, setMessages }) { // Add 'messages' and 'setMessages' to the props
   const [aiIsTyping, setAiIsTyping] = useState(false); // New state for AI typing
   const location = useLocation(); // Use the hook here
 

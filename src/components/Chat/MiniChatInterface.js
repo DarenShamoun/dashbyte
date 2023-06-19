@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom'; // Import useLocation
 import chatInterfaceStyles from './chat-interface.module.css';
 
-function MiniChatInterface({ selectedParts }) {
-  const [messages, setMessages] = useState([]);
+function MiniChatInterface({ selectedParts, messages, setMessages }) { // Add 'messages' and 'setMessages' to the props
   const [aiIsTyping, setAiIsTyping] = useState(false); // New state for AI typing
   const location = useLocation(); // Use the hook here
+
 
   // This function retrieves the current context
   const getCurrentContext = () => {
