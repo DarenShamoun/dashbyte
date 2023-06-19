@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom'; // Import useLocation
 import chatInterfaceStyles from './chat-interface.module.css';
-import logo from './assets/4kLogoOnly.png';
+import logo from '../../assets/4kLogoOnly.png';
 
 function ChatInterface({ home, selectedParts }) {
   const [messages, setMessages] = useState([]);

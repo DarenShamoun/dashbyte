@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import ChatInterface from './ChatInterface';
-import MiniChatInterface from './MiniChatInterface';
-import Navbar from './Navbar';
-import ServicesSection from './ServicesSection';
-import AboutSection from './AboutSection';
-import ContactSection from './ContactSection';
-import Footer from './Footer';
+import ChatInterface from './components/Chat/ChatInterface';
+import MiniChatInterface from './components/Chat/MiniChatInterface';
+import Navbar from './components/Navbar/Navbar';
+import ServicesSection from './components/Services/Services';
+import AboutSection from './components/About/About';
+import ContactSection from './components/Contact/Contact';
+import Footer from './components/Footer/Footer';
 import PCBuilder from './components/PcBuilder/PcBuilder';
-import NotFound from './NotFound';
+import NotFound from './components/404/NotFound';
 import HomePage from './components/Home/Home';
 
 function App() {

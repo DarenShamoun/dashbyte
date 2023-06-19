@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './servicesSection.module.css';
+import styles from './services.module.css';
 
 function ServicesSection() {
   return (
