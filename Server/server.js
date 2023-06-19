@@ -7,6 +7,7 @@ const cors = require('cors');
 const { connectToMongoDB, db, client } = require('./db');
 const partsRoute = require('./routes/parts');
 const chatRoute = require('./routes/chat');
+const checkDbConnection = require('./middlewares/checkDbConnection');
 const shutdown = require('./shutdown');
 
 const app = express();
@@ -15,13 +16,7 @@ app.use(cors()); // Use the cors middleware
 
 connectToMongoDB();
 
-app.use((req, res, next) => {
-  if (!db) {
-    res.status(503).json({ message: 'Server is starting up. Please try again later.' });
-  } else {
-    next();
-  }
-});
+app.use(checkDbConnection(db));
 
 partsRoute(app, db);
 chatRoute(app);

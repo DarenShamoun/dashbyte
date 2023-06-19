@@ -1,6 +1,7 @@
-module.exports = (app, db) => {
-    app.get('/api/parts/:part', async (req, res) => {
-      try {
+module.exports = (app) => {
+  app.get('/api/parts/:part', async (req, res) => {
+    const db = req.app.get('db');
+    try {
         const collection = db.collection(`${req.params.part.toUpperCase()}_UserBenchmarks`);
         const parts = await collection.find().toArray();
         res.json(parts);
