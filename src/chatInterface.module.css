@@ -1,4 +1,8 @@
 .chatInterface {
+  background-image: url('./assets/4kLogoOnly.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 20px;
@@ -12,6 +16,19 @@
   min-height: 20vh;
   max-height: 80vh;
   overflow: auto;
+}
+
+.miniChatInterface {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 300px;
+  height: 400px;
+  overflow: auto;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #fff;
 }
 
 .messages {
@@ -68,4 +85,15 @@
 .timestamp {
   font-size: 0.8em;
   color: #1b1b1b;
+}
+
+.chatBackground {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%; /* Change this to 100% */
+  background-color: #000; /* Change the background color to black */
+}
+
+.home {
+  background-color: #000; /* Change the background color to black */
 }

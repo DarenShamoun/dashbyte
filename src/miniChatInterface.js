@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom'; // Import useLocation
 import chatInterfaceStyles from './chatInterface.module.css';
-import logo from './assets/4kLogoOnly.png';
 
-function ChatInterface({ home, selectedParts }) {
+function MiniChatInterface({ selectedParts }) {
   const [messages, setMessages] = useState([]);
   const [aiIsTyping, setAiIsTyping] = useState(false); // New state for AI typing
   const location = useLocation(); // Use the hook here
-
 
   // This function retrieves the current context
   const getCurrentContext = () => {
@@ -64,43 +62,28 @@ function ChatInterface({ home, selectedParts }) {
   // Scroll to the bottom of the chat when a new message is added
   useEffect(() => {
     const messagesDiv = document.querySelector(`.${chatInterfaceStyles.messages}`);
-    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    if (messagesDiv) {
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
   }, [messages]);
-  // Only render the chat interface on the home page
-  if (location.pathname !== '/') {
+  
+
+  // Only render the mini chat interface on pages other than the home page
+  if (location.pathname === '/') {
     return null;
   }
 
   return (
-    <div className={`${chatInterfaceStyles.chatInterface} ${home ? 'home' : ''}`}> {/* Use the 'home' prop here */}
-      <div className={`${chatInterfaceStyles.chatInterface} ${chatInterfaceStyles.chatBackground}`} style={{ backgroundImage: `url(${logo})` }}>
-        <div className={chatInterfaceStyles.chatInterface}>
-          <div className={chatInterfaceStyles.chatInterfaceHome}> {/* Use chatInterfaceHome class */}
-            <div className={chatInterfaceStyles.chatInterface}>
-              <div className={chatInterfaceStyles.messages}>
-              {messages.map((message, index) => (
-                <div key={index} style={{width: '100%', display: 'flex', justifyContent: message.sender === 'user' ? 'flex-end' : 'flex-start'}}>
-                  <div className={message.sender === 'user' ? chatInterfaceStyles.userMessage : chatInterfaceStyles.aiMessage}>
-                    <strong>{message.sender.toUpperCase()}: </strong>
-                    <p>{message.text}</p>
-                    <span className={chatInterfaceStyles.timestamp}>{message.timestamp}</span>
-                  </div>
-                </div>
-              ))}
-                {/* Add this line */}
-                {aiIsTyping && <div className={chatInterfaceStyles.aiTyping}>AI is typing...</div>}
-              </div>
-              <form onSubmit={handleInputSubmit} className={chatInterfaceStyles.inputForm}>
-                <input name="input" type="text" className={chatInterfaceStyles.inputField} />
-                <button type="submit" className={chatInterfaceStyles.sendButton}>Send</button>
-              </form>
-            </div>
-          </div>
-        </div>
+    <div className={chatInterfaceStyles.miniChatInterface}>
+      <div className={chatInterfaceStyles.messages}>
+        {/* Your existing code... */}
       </div>
+      <form onSubmit={handleInputSubmit} className={chatInterfaceStyles.inputForm}>
+        <input name="input" type="text" className={chatInterfaceStyles.inputField} />
+        <button type="submit" className={chatInterfaceStyles.sendButton}>Send</button>
+      </form>
     </div>
   );
-
 }
 
-export default ChatInterface;
+export default MiniChatInterface;

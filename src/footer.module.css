@@ -2,13 +2,14 @@
   padding: 20px;
   background-color: #343a40;
   color: #fff;
-  position: sticky;
-  bottom: 0;
-  height: 100px; /* adjust this value as needed */
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: fixed; /* Change this line */
+  bottom: 0;
+  width: 100%; /* Add this line to ensure the footer spans the full width of the page */
 }
+
 
 .socialLinks {
   display: flex;

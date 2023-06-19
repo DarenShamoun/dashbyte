@@ -1,0 +1,23 @@
+.homePage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+  }
+  
+  .homePage h1 {
+    font-size: 2.5em;
+  }
+  
+  .homePage p {
+    font-size: 1.5em;
+  }
+  
+  .homePage button {
+    padding: 10px 20px;
+    font-size: 1.5em;
+    margin-top: 20px;
+  }
+  
