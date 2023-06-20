@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { handleInputSubmit } from './components/Chat/ChatFunctions'; // Import handleInputSubmit
-import ChatInterface from './components/Chat/ChatInterface';
-import MiniChatInterface from './components/Chat/MiniChatInterface';
+import ChatContainer from './components/Chat/ChatContainer'; // Import ChatContainer
 import Navbar from './components/Navbar/Navbar';
 import ServicesSection from './components/Services/Services';
 import AboutSection from './components/About/About';
@@ -17,7 +16,7 @@ function App() {
   const [selectedParts, setSelectedParts] = useState([]);
 
   // The chat messages (initially empty)
-  const [messages, setMessages] = useState([]); // Add this line
+  const [messages, setMessages] = useState([]);
 
   const handlePartSelect = (part) => {
     // Add the selected part to the selected parts
@@ -37,8 +36,7 @@ function App() {
             <Route path="/pc-builder" element={<PCBuilder selectedParts={selectedParts} onPartSelect={handlePartSelect} />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-          <ChatInterface handleInputSubmit={handleInputSubmit} selectedParts={selectedParts} messages={messages} setMessages={setMessages} /> {/* Pass handleInputSubmit to ChatInterface */}
-          <MiniChatInterface handleInputSubmit={handleInputSubmit} selectedParts={selectedParts} messages={messages} setMessages={setMessages} /> {/* Pass handleInputSubmit to MiniChatInterface */}
+          <ChatContainer handleInputSubmit={handleInputSubmit} selectedParts={selectedParts} messages={messages} setMessages={setMessages} />
         </main>
         <Footer />
       </Router>

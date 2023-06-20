@@ -1,7 +1,7 @@
 import React from 'react';
 import chatInterfaceStyles from './chat-interface.module.css';
 
-function ChatBox({ messages, aiIsTyping, handleInputSubmit }) {
+function ChatBox({ messages = [], aiIsTyping, handleInputSubmit }) {
   return (
     <div>
       <div className={chatInterfaceStyles.messages}>
