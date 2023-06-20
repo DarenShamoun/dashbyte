@@ -1,5 +1,4 @@
 require('dotenv').config(); // Load environment variables from .env file
-console.log(process.env.OPENAI_API_KEY); // Log the OpenAI API key to the console
 
 const express = require('express');
 const bodyParser = require('body-parser');

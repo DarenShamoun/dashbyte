@@ -20,7 +20,6 @@
 
 .userMessage, .aiMessage {
   display: inline-block; /* Make the width of the boxes only as wide as the content */
-  flex-direction: column;
   padding: 5px;
   margin-bottom: 10px;
   max-width: 80%;
@@ -47,9 +46,5 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%; /* Change this to 100% */
-  background-color: #000; /* Change the background color to black */
-}
-
-.home {
   background-color: #000; /* Change the background color to black */
 }

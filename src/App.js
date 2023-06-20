@@ -17,8 +17,6 @@ function App() {
 
   // The chat messages (initially empty)
   const [messages, setMessages] = useState([]);
-  
-  console.log(messages);
 
   const handlePartSelect = (part) => {
     // Add the selected part to the selected parts
@@ -45,5 +43,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
