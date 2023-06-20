@@ -3,12 +3,8 @@ export const getCurrentContext = (selectedParts) => {
   return JSON.stringify(selectedParts);
 };
 
-export const handleInputSubmit = async (event, messages, setMessages, selectedParts, setAiIsTyping) => {
+export const handleInputSubmit = async (event, input, setInput, messages, setMessages, selectedParts, setAiIsTyping) => {
   event.preventDefault(); // Prevent the form from causing the page to refresh
-
-
-  // Get the input value from the form event
-  const input = event.target.elements.input.value;
 
   // Add the user's message to the chat history
   setMessages([...messages, { text: input, sender: 'user', timestamp: new Date().toLocaleTimeString() }]);
@@ -47,5 +43,6 @@ export const handleInputSubmit = async (event, messages, setMessages, selectedPa
   setMessages(prevMessages => [...prevMessages, { text: aiMessage, sender: 'ai', timestamp: new Date().toLocaleTimeString() }]);
 
   // Clear the input field
-  event.target.elements.input.value = '';
+  setInput('');
 };
+

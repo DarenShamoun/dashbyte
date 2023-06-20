@@ -1,24 +1,26 @@
-import React from 'react';
-import chatInterfaceStyles from './chat-interface.module.css';
+import React, { useState } from 'react';
+import './chat-box.module.css'; // Import the styles
 
-function ChatBox({ messages = [], aiIsTyping, handleInputSubmit }) {
+function ChatBox({ messages = [], aiIsTyping, selectedParts, setMessages, handleInputSubmit }) {
+  const [input, setInput] = useState('');
+
+  const handleInputChange = (event) => {
+    setInput(event.target.value);
+  };
+
   return (
-    <div>
-      <div className={chatInterfaceStyles.messages}>
+    <div className="chatBox">
+      <div className="chatBox__history">
         {messages.map((message, index) => (
-          <div key={index} style={{width: '100%', display: 'flex', justifyContent: message.sender === 'user' ? 'flex-end' : 'flex-start'}}>
-            <div className={message.sender === 'user' ? chatInterfaceStyles.userMessage : chatInterfaceStyles.aiMessage}>
-              <strong>{message.sender.toUpperCase()}: </strong>
-              <p>{message.text}</p>
-              <span className={chatInterfaceStyles.timestamp}>{message.timestamp}</span>
-            </div>
+          <div key={index} className={`chatBox__message chatBox__message--${message.sender}`}>
+            {message.text}
           </div>
         ))}
-        {aiIsTyping && <div className={chatInterfaceStyles.aiTyping}>AI is typing...</div>}
+        {aiIsTyping && <div className="chatBox__typing">AI is typing...</div>}
       </div>
-      <form onSubmit={handleInputSubmit} className={chatInterfaceStyles.inputForm}>
-        <input name="input" type="text" className={chatInterfaceStyles.inputField} />
-        <button type="submit" className={chatInterfaceStyles.sendButton}>Send</button>
+      <form className="chatBox__inputForm" onSubmit={(event) => handleInputSubmit(event, input, setInput)}>
+        <textarea className="chatBox__input" value={input} onChange={handleInputChange} />
+        <button type="submit">Send</button>
       </form>
     </div>
   );

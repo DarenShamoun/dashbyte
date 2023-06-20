@@ -3,8 +3,9 @@ import { useLocation } from 'react-router-dom'; // Import useLocation
 import chatInterfaceStyles from './chat-interface.module.css';
 import logo from '../../assets/4kLogoOnly.png';
 import ChatBox from './ChatBox'; // Import ChatBox
+import { handleInputSubmit } from './ChatFunctions'; // Import handleInputSubmit
 
-function ChatInterface({ home, selectedParts, messages, setMessages, handleInputSubmit }) { // Add 'handleInputSubmit' to the props
+function ChatInterface({ home, selectedParts, messages, setMessages }) { // Add 'handleInputSubmit' to the props
   const [aiIsTyping, setAiIsTyping] = useState(false); // New state for AI typing
   const location = useLocation(); // Use the hook here
 
@@ -27,7 +28,7 @@ function ChatInterface({ home, selectedParts, messages, setMessages, handleInput
         <div className={chatInterfaceStyles.chatInterface}>
           <div className={chatInterfaceStyles.chatInterfaceHome}> {/* Use chatInterfaceHome class */}
             <div className={chatInterfaceStyles.chatInterface}>
-              <ChatBox messages={messages} aiIsTyping={aiIsTyping} handleInputSubmit={handleInputSubmit} /> {/* Use the ChatBox component here */}
+              <ChatBox messages={messages} aiIsTyping={aiIsTyping} handleInputSubmit={(event) => handleInputSubmit(event, messages, setMessages, selectedParts, setAiIsTyping)} /> {/* Use the ChatBox component here */}
             </div>
           </div>
         </div>
