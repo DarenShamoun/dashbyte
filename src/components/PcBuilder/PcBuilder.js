@@ -123,18 +123,6 @@ function PcBuilder() {
           </li>
         ))}
       </ul>
-      <h2>Chat:</h2>
-      <div className={styles.chatBox}>
-        {chatMessages.map((message, index) => (
-          <p key={index} className={message.role === 'ai' ? styles.aiMessage : styles.userMessage}>
-            {message.role.toUpperCase()}: {message.content}
-          </p>
-        ))}
-      </div>
-      <form onSubmit={onChatSubmit}>
-        <input type="text" value={userMessage} onChange={(e) => setUserMessage(e.target.value)} />
-        <button type="submit">Send</button>
-      </form>
     </div>
   );
 }
