@@ -4,8 +4,8 @@ export const getCurrentContext = (selectedParts) => {
 };
 
 export const handleInputSubmit = async (event, messages, setMessages, selectedParts, setAiIsTyping) => {
-  console.log('messages:', messages);
-  event.preventDefault();
+  event.preventDefault(); // Prevent the form from causing the page to refresh
+
 
   // Get the input value from the form event
   const input = event.target.elements.input.value;

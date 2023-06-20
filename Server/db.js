@@ -5,6 +5,8 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 
 let db;
 
+const getDb = () => db;
+
 const connectToMongoDB = async () => {
   try {
     await client.connect();
@@ -16,4 +18,4 @@ const connectToMongoDB = async () => {
   }
 };
 
-module.exports = { connectToMongoDB, db, client };
+module.exports = { connectToMongoDB, getDb, client };

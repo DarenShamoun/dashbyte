@@ -29,7 +29,7 @@ function App() {
         <Navbar />
         <main>
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<HomePage messages={messages} setMessages={setMessages} />} />
             <Route path="/about" element={<AboutSection />} />
             <Route path="/services" element={<ServicesSection />} />
             <Route path="/contact" element={<ContactSection />} />
