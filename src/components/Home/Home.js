@@ -3,6 +3,9 @@ import ChatContainer from '../Chat/ChatContainer'; // Import ChatContainer
 import './home.module.css';
 
 function HomePage({ messages, setMessages }) { // Add 'messages' and 'setMessages' to the props
+  
+  console.log(messages);
+  
   return (
     <div className="homePage">
       <h1>Welcome to Dashbyte</h1>

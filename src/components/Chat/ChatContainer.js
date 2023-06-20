@@ -6,6 +6,8 @@ import MiniChatInterface from './MiniChatInterface';
 function ChatContainer({ handleInputSubmit, selectedParts, messages, setMessages }) {
   const location = useLocation();
 
+  console.log(messages);
+  
   return (
     <div>
       {location.pathname === '/' ? 

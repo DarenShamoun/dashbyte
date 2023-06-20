@@ -22,13 +22,18 @@ function ChatInterface({ home, selectedParts, messages, setMessages }) { // Add 
     return null;
   }
 
+  console.log(messages);
+
   return (
     <div className={`${chatInterfaceStyles.chatInterface} ${home ? 'home' : ''}`}> {/* Use the 'home' prop here */}
       <div className={`${chatInterfaceStyles.chatInterface} ${chatInterfaceStyles.chatBackground}`} style={{ backgroundImage: `url(${logo})` }}>
         <div className={chatInterfaceStyles.chatInterface}>
           <div className={chatInterfaceStyles.chatInterfaceHome}> {/* Use chatInterfaceHome class */}
             <div className={chatInterfaceStyles.chatInterface}>
-              <ChatBox messages={messages} aiIsTyping={aiIsTyping} handleInputSubmit={(event) => handleInputSubmit(event, messages, setMessages, selectedParts, setAiIsTyping)} /> {/* Use the ChatBox component here */}
+              <ChatBox messages={messages} aiIsTyping={aiIsTyping} handleInputSubmit={(event, input, setInput) => {
+                event.preventDefault();
+                handleInputSubmit(event, input, setInput, messages, setMessages, selectedParts, setAiIsTyping);
+              }} />
             </div>
           </div>
         </div>

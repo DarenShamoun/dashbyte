@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import './chat-box.module.css'; // Import the styles
 
-function ChatBox({ messages = [], aiIsTyping, selectedParts, setMessages, handleInputSubmit }) {
+function ChatBox({ messages = [], aiIsTyping, handleInputSubmit }) {
   const [input, setInput] = useState('');
 
   const handleInputChange = (event) => {

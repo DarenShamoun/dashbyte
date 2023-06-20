@@ -19,9 +19,14 @@ function MiniChatInterface({ selectedParts, messages, setMessages }) {
     return null;
   }
 
+  console.log(messages);
+
   return (
     <div className={chatInterfaceStyles.miniChatInterface}>
-      <ChatBox messages={messages} aiIsTyping={aiIsTyping} handleInputSubmit={(event) => handleInputSubmit(event, messages, setMessages, selectedParts, setAiIsTyping)} />
+      <ChatBox messages={messages} aiIsTyping={aiIsTyping} handleInputSubmit={(event, input, setInput) => {
+        event.preventDefault();
+        handleInputSubmit(event, input, setInput, messages, setMessages, selectedParts, setAiIsTyping);
+      }} />
     </div>
   );
 }
