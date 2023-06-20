@@ -14,12 +14,14 @@ const getAiMessage = async (chatMessages, context, selectedParts) => {
     console.log('Creating chat with OpenAI API...');
     const requestBody = {
       model: 'gpt-3.5-turbo',
-      messages: [...chatMessages],
+      messages: [
+        {
+          role: 'system',
+          content: context,
+        },
+        ...chatMessages,
+      ],
     };
-
-    if (context && context.length > 0) {
-      requestBody.context = context;
-    }
 
     if (selectedParts && selectedParts.length > 0) {
       requestBody.messages.push({
