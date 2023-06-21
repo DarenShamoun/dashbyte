@@ -1,32 +1,28 @@
-import React, { useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
-import { Container, Row } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import ChatBox from './ChatBox';
-import { handleInputSubmit } from './ChatFunctions';
+import ChatMessage from './ChatMessage';
+import { handleInputSubmit } from './chatFunctions'; // Import handleInputSubmit from chatFunctions.js
 
-function ChatInterface({ home, selectedParts, messages, setMessages, setAiIsTyping }) {
-  const location = useLocation();
+const ChatInterface = ({ selectedParts }) => {
+  const [messages, setMessages] = useState([]);
+  const [input, setInput] = useState('');
 
-  useEffect(() => {
-    const chatHistory = document.querySelector('.chatBox__history');
-    chatHistory.scrollTop = chatHistory.scrollHeight;
-  }, [messages]);
+  // Use handleInputSubmit from chatFunctions.js
+  const handleSubmit = (e) => handleInputSubmit(e, input, setInput, messages, setMessages);
 
-  if (!home && location.pathname !== '/') {
-    return null;
-  }
+  const handleInputChange = (e) => {
+    setInput(e.target.value);
+  };
 
   return (
-    <Container>
-      <Row>
-        <ChatBox
-          messages={messages}
-          aiIsTyping={setAiIsTyping}
-          handleInputSubmit={(event, input, setInput) => handleInputSubmit(event, input, setInput, messages, setMessages, selectedParts, setAiIsTyping)}
-        />
-      </Row>
-    </Container>
+    <div>
+      {messages.map((message) => (
+        <ChatMessage key={message.id} message={message} />
+      ))}
+      <ChatBox handleInputSubmit={handleSubmit} handleInputChange={handleInputChange} input={input} />
+    </div>
   );
-}
+};
 
 export default ChatInterface;

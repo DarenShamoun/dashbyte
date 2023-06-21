@@ -16,7 +16,11 @@ app.use(cors()); // Use the cors middleware
 
 connectToMongoDB().then(() => {
   app.set('db', getDb()); // Set the database connection in the Express app instance
+  app.use(checkDbConnection(getDb));
+  partsRoute(app);
+  chatRoute(app);
 });
+
 
 app.use(checkDbConnection(getDb));
 
