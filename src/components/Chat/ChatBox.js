@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import { ListGroup, Form, Button, Col } from 'react-bootstrap';
 
-function ChatBox({ messages = [], aiIsTyping, handleInputSubmit }) {
+function ChatBox({ messages = [], aiIsTyping, setAiIsTyping, handleInputSubmit }) {
   const [input, setInput] = useState('');
 
   const handleInputChange = (event) => {
     setInput(event.target.value);
   };
-
-  console.log('ChatBox aiIsTyping:', aiIsTyping); // Add this line
 
   return (
     <Col className="d-flex flex-column justify-content-between">
@@ -18,9 +16,9 @@ function ChatBox({ messages = [], aiIsTyping, handleInputSubmit }) {
             {message.text}
           </ListGroup.Item>
         ))}
-        {aiIsTyping && <div className="chatBox__typing">AI is typing...</div>}
+        {aiIsTyping === true && <div className="chatBox__typing">AI is typing...</div>}
       </ListGroup>
-      <Form className="chatBox__inputForm" onSubmit={(event) => handleInputSubmit(event, input, setInput)}>
+      <Form className="chatBox__inputForm" onSubmit={(event) => handleInputSubmit(event, input, setInput, aiIsTyping, setAiIsTyping)}>
         <Form.Control
           className="chatBox__input"
           value={input}
@@ -28,7 +26,7 @@ function ChatBox({ messages = [], aiIsTyping, handleInputSubmit }) {
           onKeyPress={(event) => {
             if (event.key === 'Enter') {
               event.preventDefault();
-              handleInputSubmit(event, input, setInput);
+              handleInputSubmit(event, input, setInput, aiIsTyping, setAiIsTyping);
             }
           }}
           as="textarea"
