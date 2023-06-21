@@ -9,26 +9,13 @@ const openai = axios.create({
   }
 });
 
-const getAiMessage = async (chatMessages, context, selectedParts) => {
+const getAiMessage = async (chatMessages) => {
   try {
     console.log('Creating chat with OpenAI API...');
     const requestBody = {
       model: 'gpt-3.5-turbo',
-      messages: [
-        {
-          role: 'system',
-          content: context,
-        },
-        ...chatMessages,
-      ],
+      messages: chatMessages,
     };
-
-    if (selectedParts && selectedParts.length > 0) {
-      requestBody.messages.push({
-        role: 'system',
-        content: `The user has selected the following parts: ${JSON.stringify(selectedParts)}`,
-      });
-    }
 
     const response = await openai.post('/v1/chat/completions', requestBody);
 
@@ -41,5 +28,5 @@ const getAiMessage = async (chatMessages, context, selectedParts) => {
   }
 };
 
-
 module.exports = getAiMessage;
+

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import ChatBox from './ChatBox';
 import ChatMessage from './ChatMessage';
 import { handleInputSubmit } from './chatFunctions'; // Import handleInputSubmit from chatFunctions.js
