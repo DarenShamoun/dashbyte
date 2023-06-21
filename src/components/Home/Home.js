@@ -1,13 +1,14 @@
 import React from 'react';
-import './home.module.css';
+import styles from './home.module.css';
 
-function HomePage() {
- return (
-  <div className="homePage">
-   <h1>Welcome to Dashbyte</h1>
-   <p>Build your PC with the help of our AI assistant.</p>
-  </div>
- );
+function HomePage({ children }) {
+  return (
+    <section className={styles.homeSection}>
+      <h1>Welcome to Dashbyte</h1>
+      <p>Your one-stop solution for all your tech needs.</p>
+      {children}
+    </section>
+  );
 }
 
 export default HomePage;
