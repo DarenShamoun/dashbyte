@@ -1,7 +1,7 @@
-Dashbyte
+# Dashbyte
 Dashbyte is a web application that provides a variety of services, including software development, PC building, IT services, and website design. The application is built using React and Bootstrap for the front-end and connects to OpenAI's GPT-3 model for chat functionality.
 
-Features
+# Features
 Home Page: The home page features a full-scale chat interface where users can interact with an AI model. The chat interface is built using React and Bootstrap for a responsive and user-friendly experience.
 
 Services Page: The services page provides information about the various services offered by Dashbyte. Each service is presented in a card-like format for easy reading.
@@ -10,10 +10,10 @@ Chat Interface: The chat interface is available on all pages of the application.
 
 AI Integration: The chat interface connects to OpenAI's GPT-3 model to provide intelligent and interactive responses to user inputs. The AI integration is handled on the server-side, with the client-side code making POST requests to the server to process user inputs.
 
-Goals
+# Goals
 The primary goal of Dashbyte is to provide a seamless and interactive user experience. The chat interface is designed to be intuitive and engaging, with the AI providing intelligent responses to user inputs. The application aims to maintain a consistent chat context across all pages, allowing users to continue their conversation with the AI as they navigate through the site.
 
-Future Improvements
+# Future Improvements
 Future improvements to Dashbyte may include further refining the chat interface and expanding the range of services offered. The application may also benefit from additional AI integrations, such as more advanced natural language processing capabilities.
 
 
