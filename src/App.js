@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { handleInputSubmit } from './components/Chat/ChatFunctions'; // Import handleInputSubmit
-import ChatContainer from './components/Chat/ChatContainer'; // Import ChatContainer
+import { handleInputSubmit } from './components/Chat/ChatFunctions';
+import ChatContainer from './components/Chat/ChatContainer';
 import Navbar from './components/Navbar/Navbar';
 import ServicesSection from './components/Services/Services';
 import AboutSection from './components/About/About';
@@ -12,14 +12,11 @@ import NotFound from './components/404/NotFound';
 import HomePage from './components/Home/Home';
 
 function App() {
-  // The selected parts (initially empty)
   const [selectedParts, setSelectedParts] = useState([]);
-
-  // The chat messages (initially empty)
   const [messages, setMessages] = useState([]);
+  const [aiIsTyping, setAiIsTyping] = useState(false);
 
   const handlePartSelect = (part) => {
-    // Add the selected part to the selected parts
     setSelectedParts(prevSelectedParts => [...prevSelectedParts, part]);
   };
 
@@ -36,13 +33,12 @@ function App() {
             <Route path="/pc-builder" element={<PCBuilder selectedParts={selectedParts} onPartSelect={handlePartSelect} />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-          <ChatContainer handleInputSubmit={handleInputSubmit} selectedParts={selectedParts} messages={messages} setMessages={setMessages} />
+          <ChatContainer handleInputSubmit={handleInputSubmit} selectedParts={selectedParts} messages={messages} setMessages={setMessages} setAiIsTyping={setAiIsTyping} />
         </main>
         <Footer />
       </Router>
     </div>
   );
 }
-
 
 export default App;
