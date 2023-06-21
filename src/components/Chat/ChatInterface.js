@@ -1,43 +1,30 @@
 import React, { useState } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { v4 as uuidv4 } from 'uuid';
 import ChatBox from './ChatBox';
 import ChatMessage from './ChatMessage';
-import { handleInputSubmit, getCurrentContext } from '../../utils/chatFunctions';
+import { handleInputSubmit } from './chatFunctions'; // Import handleInputSubmit from chatFunctions.js
 
-function ChatInterface({ selectedParts }) {
+const ChatInterface = ({ selectedParts }) => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
+  const [aiIsTyping, setAiIsTyping] = useState(false);
 
-  const handleInputChange = (event) => {
-    setInput(event.target.value);
-  };
+  // Use handleInputSubmit from chatFunctions.js
+  const handleSubmit = (e) => handleInputSubmit(e, input, setInput, messages, setMessages, setAiIsTyping);
 
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-    handleInputSubmit(event, input, setInput, messages, setMessages, selectedParts);
+  const handleInputChange = (e) => {
+    setInput(e.target.value);
   };
 
   return (
-    <Container>
-      <Row>
-        <Col>
-          {messages.map((message, index) => (
-            <ChatMessage
-              key={index}
-              text={message.text}
-              sender={message.sender}
-              timestamp={message.timestamp}
-            />
-          ))}
-          <ChatBox
-            input={input}
-            handleInputChange={handleInputChange}
-            handleFormSubmit={handleFormSubmit}
-          />
-        </Col>
-      </Row>
-    </Container>
+    <div>
+      {messages.map((message) => (
+        <ChatMessage key={message.id} message={message} />
+      ))}
+      {aiIsTyping && <p>AI is typing...</p>}
+      <ChatBox handleInputSubmit={handleSubmit} handleInputChange={handleInputChange} input={input} />
+    </div>
   );
-}
+};
 
 export default ChatInterface;

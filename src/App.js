@@ -8,9 +8,7 @@ import Footer from './components/Footer/Footer';
 import PCBuilder from './components/PcBuilder/PcBuilder';
 import NotFound from './components/404/NotFound';
 import HomePage from './components/Home/Home';
-import FullChat from './components/Chat/ChatMessage';
-import MiniChat from './components/Chat/MiniChatInterface';
-import { ChatProvider } from './components/Chat/ChatBox';
+import { MiniChatInterface } from './components/Chat';
 
 function App() {
   const [selectedParts, setSelectedParts] = useState([]);
@@ -22,20 +20,19 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <ChatProvider>
-          <Navbar />
-          <main>
-            <Routes>
-              <Route path="/" element={<HomePage><FullChat /></HomePage>} />
-              <Route path="/about" element={<AboutSection><MiniChat /></AboutSection>} />
-              <Route path="/services" element={<ServicesSection><MiniChat /></ServicesSection>} />
-              <Route path="/contact" element={<ContactSection><MiniChat /></ContactSection>} />
-              <Route path="/pc-builder" element={<PCBuilder selectedParts={selectedParts} onPartSelect={handlePartSelect}><MiniChat /></PCBuilder>} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </main>
-          <Footer />
-        </ChatProvider>
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutSection />} />
+            <Route path="/services" element={<ServicesSection />} />
+            <Route path="/contact" element={<ContactSection />} />
+            <Route path="/pc-builder" element={<PCBuilder selectedParts={selectedParts} onPartSelect={handlePartSelect} />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          <MiniChatInterface selectedParts={selectedParts} />
+        </main>
+        <Footer />
       </Router>
     </div>
   );

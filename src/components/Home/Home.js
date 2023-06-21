@@ -1,13 +1,22 @@
 import React from 'react';
-import styles from './home.module.css';
+import { Container, Row, Col } from 'react-bootstrap';
+import ChatInterface from '../Chat/ChatInterface';
 
-function HomePage({ children }) {
+function HomePage() {
   return (
-    <section className={styles.homeSection}>
-      <h1>Welcome to Dashbyte</h1>
-      <p>Your one-stop solution for all your tech needs.</p>
-      {children}
-    </section>
+    <Container>
+      <Row>
+        <Col>
+          <h1>Welcome to Dashbyte!</h1>
+          <p>We offer a variety of tech services, including software development, PC building, IT services, and website design. Chat with us to learn more!</p>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <ChatInterface />
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
