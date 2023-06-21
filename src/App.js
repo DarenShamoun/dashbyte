@@ -8,9 +8,9 @@ import Footer from './components/Footer/Footer';
 import PCBuilder from './components/PcBuilder/PcBuilder';
 import NotFound from './components/404/NotFound';
 import HomePage from './components/Home/Home';
-import FullChat from './components/Chat/FullChat';
-import MiniChat from './components/Chat/MiniChat';
-import { ChatProvider } from './components/Chat/ChatContext';
+import FullChat from './components/Chat/ChatMessage';
+import MiniChat from './components/Chat/MiniChatInterface';
+import { ChatProvider } from './components/Chat/ChatBox';
 
 function App() {
   const [selectedParts, setSelectedParts] = useState([]);
