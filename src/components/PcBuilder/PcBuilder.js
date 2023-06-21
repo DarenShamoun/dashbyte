@@ -10,9 +10,7 @@ function PcBuilder() {
   const ssd = usePart('SSD');
   const hdd = usePart('HDD');
   const usb = usePart('USB');
-
-  const selectedParts = [cpu.selectedPart, gpu.selectedPart, ram.selectedPart,
-     ssd.selectedPart, hdd.selectedPart, usb.selectedPart];
+  const selectedParts = [cpu.selectedPart, gpu.selectedPart, ram.selectedPart, ssd.selectedPart, hdd.selectedPart, usb.selectedPart];
 
   return (
     <div className={styles.pcBuilder}>

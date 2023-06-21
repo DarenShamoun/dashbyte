@@ -8,6 +8,8 @@ function ChatBox({ messages = [], aiIsTyping, handleInputSubmit }) {
     setInput(event.target.value);
   };
 
+  console.log('ChatBox aiIsTyping:', aiIsTyping); // Add this line
+
   return (
     <Col className="d-flex flex-column justify-content-between">
       <ListGroup className="chatBox__history mb-3">
