@@ -5,8 +5,7 @@ export const getCurrentContext = (selectedParts) => {
   return JSON.stringify(selectedParts);
 };
 
-
-export const handleInputSubmit = async (e, input, setInput, messages, setMessages, selectedParts, setAiIsTyping) => {
+export const handleInputSubmit = async (e, input, setInput, messages, setMessages, selectedParts) => {
   e.preventDefault();
   if (input.trim() !== '') {
     const newMessage = {
@@ -16,7 +15,6 @@ export const handleInputSubmit = async (e, input, setInput, messages, setMessage
     };
     setMessages([...messages, newMessage]);
     setInput('');
-    setAiIsTyping(true);
 
     // Prepare the messages to send to the server
     const chatMessages = [
@@ -55,6 +53,6 @@ export const handleInputSubmit = async (e, input, setInput, messages, setMessage
     };
 
     setMessages((prevMessages) => [...prevMessages, aiMessage]);
-    setAiIsTyping(false);
   }
 };
+

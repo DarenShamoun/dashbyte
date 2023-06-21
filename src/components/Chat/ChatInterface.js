@@ -7,10 +7,9 @@ import { handleInputSubmit } from './chatFunctions'; // Import handleInputSubmit
 const ChatInterface = ({ selectedParts }) => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
-  const [aiIsTyping, setAiIsTyping] = useState(false);
 
   // Use handleInputSubmit from chatFunctions.js
-  const handleSubmit = (e) => handleInputSubmit(e, input, setInput, messages, setMessages, setAiIsTyping);
+  const handleSubmit = (e) => handleInputSubmit(e, input, setInput, messages, setMessages);
 
   const handleInputChange = (e) => {
     setInput(e.target.value);
@@ -21,7 +20,6 @@ const ChatInterface = ({ selectedParts }) => {
       {messages.map((message) => (
         <ChatMessage key={message.id} message={message} />
       ))}
-      {aiIsTyping && <p>AI is typing...</p>}
       <ChatBox handleInputSubmit={handleSubmit} handleInputChange={handleInputChange} input={input} />
     </div>
   );
