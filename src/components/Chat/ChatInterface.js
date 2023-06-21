@@ -1,32 +1,31 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom'; 
-import chatInterfaceStyles from './chat-interface.module.css';
-import logo from '../../assets/4kLogoOnly.png';
-import ChatBox from './ChatBox'; 
-import { handleInputSubmit } from './ChatFunctions'; 
+import React, { useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
+import { Container, Row } from 'react-bootstrap';
+import ChatBox from './ChatBox';
+import { handleInputSubmit } from './ChatFunctions';
 
-function ChatInterface({ home, selectedParts, messages, setMessages }) { 
-  const [aiIsTyping, setAiIsTyping] = useState(false); 
-  const location = useLocation(); 
+function ChatInterface({ home, selectedParts, messages, setMessages, setAiIsTyping }) {
+  const location = useLocation();
 
   useEffect(() => {
-    const messagesDiv = document.querySelector(`.${chatInterfaceStyles.messages}`);
-    if (messagesDiv) {
-      messagesDiv.scrollTop = messagesDiv.scrollHeight;
-    }
+    const chatHistory = document.querySelector('.chatBox__history');
+    chatHistory.scrollTop = chatHistory.scrollHeight;
   }, [messages]);
 
-  if (location.pathname !== '/') {
+  if (!home && location.pathname !== '/') {
     return null;
   }
 
   return (
-    <div className={`${chatInterfaceStyles.chatInterface} ${home ? 'home' : ''}`} style={{ backgroundImage: `url(${logo})` }}>
-      <ChatBox messages={messages} aiIsTyping={aiIsTyping} handleInputSubmit={(event, input, setInput) => {
-        event.preventDefault();
-        handleInputSubmit(event, input, setInput, messages, setMessages, selectedParts, setAiIsTyping);
-      }} />
-    </div>
+    <Container>
+      <Row>
+        <ChatBox
+          messages={messages}
+          aiIsTyping={setAiIsTyping}
+          handleInputSubmit={(event, input, setInput) => handleInputSubmit(event, input, setInput, messages, setMessages, selectedParts, setAiIsTyping)}
+        />
+      </Row>
+    </Container>
   );
 }
 

@@ -1,22 +1,19 @@
 import React, { useState } from 'react';
 import ChatContainer from './ChatContainer';
-import { handleInputSubmit as handleInputSubmitFunction } from './ChatFunctions';
+import { handleInputSubmit } from './ChatFunctions';
 
-function ChatManager() {
+function ChatManager({ home, selectedParts }) {
   const [messages, setMessages] = useState([]);
-  const [selectedParts, setSelectedParts] = useState([]);
-
-  const handleInputSubmit = (event, input, setInput) => {
-    event.preventDefault();
-    handleInputSubmitFunction(event, input, setInput, messages, setMessages, selectedParts);
-  };
+  const [aiIsTyping, setAiIsTyping] = useState(false);
 
   return (
-    <ChatContainer 
-      handleInputSubmit={handleInputSubmit} 
-      selectedParts={selectedParts} 
-      messages={messages} 
-      setMessages={setMessages} 
+    <ChatContainer
+      home={home}
+      selectedParts={selectedParts}
+      messages={messages}
+      setMessages={setMessages}
+      setAiIsTyping={setAiIsTyping}
+      handleInputSubmit={(event, input, setInput) => handleInputSubmit(event, input, setInput, messages, setMessages, selectedParts, setAiIsTyping)}
     />
   );
 }

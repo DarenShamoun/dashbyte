@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ListGroup, Form, Button, Col } from 'react-bootstrap';
 
 function ChatBox({ messages = [], aiIsTyping, handleInputSubmit }) {
   const [input, setInput] = useState('');
@@ -8,20 +9,31 @@ function ChatBox({ messages = [], aiIsTyping, handleInputSubmit }) {
   };
 
   return (
-    <div className="chatBox">
-      <div className="chatBox__history">
+    <Col className="d-flex flex-column justify-content-between">
+      <ListGroup className="chatBox__history mb-3">
         {messages.map((message, index) => (
-          <div key={index} className={`chatBox__message chatBox__message--${message.sender}`}>
+          <ListGroup.Item key={index} className={`chatBox__message chatBox__message--${message.sender}`}>
             {message.text}
-          </div>
+          </ListGroup.Item>
         ))}
         {aiIsTyping && <div className="chatBox__typing">AI is typing...</div>}
-      </div>
-      <form className="chatBox__inputForm" onSubmit={(event) => handleInputSubmit(event, input, setInput)}>
-        <textarea className="chatBox__input" value={input} onChange={handleInputChange} />
-        <button type="submit">Send</button>
-      </form>
-    </div>
+      </ListGroup>
+      <Form className="chatBox__inputForm" onSubmit={(event) => handleInputSubmit(event, input, setInput)}>
+        <Form.Control
+          className="chatBox__input"
+          value={input}
+          onChange={handleInputChange}
+          onKeyPress={(event) => {
+            if (event.key === 'Enter') {
+              event.preventDefault();
+              handleInputSubmit(event, input, setInput);
+            }
+          }}
+          as="textarea"
+        />
+        <Button type="submit">Send</Button>
+      </Form>
+    </Col>
   );
 }
 

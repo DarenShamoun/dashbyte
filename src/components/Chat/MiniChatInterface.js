@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import chatInterfaceStyles from './mini-chat-interface.module.css';
-import ChatBox from './ChatBox'; // Import ChatBox
-import { handleInputSubmit } from './ChatFunctions'; // Import handleInputSubmit
+import { Container, Row, Col } from 'react-bootstrap';
+import ChatBox from './ChatBox';
+import { handleInputSubmit } from './ChatFunctions';
 
 function MiniChatInterface({ selectedParts, messages, setMessages }) {
   const [aiIsTyping, setAiIsTyping] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
-    const messagesDiv = document.querySelector(`.${chatInterfaceStyles.messages}`);
+    const messagesDiv = document.querySelector('.chatBox__history');
     if (messagesDiv) {
       messagesDiv.scrollTop = messagesDiv.scrollHeight;
     }
@@ -20,12 +20,17 @@ function MiniChatInterface({ selectedParts, messages, setMessages }) {
   }
 
   return (
-    <div className={chatInterfaceStyles.miniChatInterface}>
-      <ChatBox messages={messages} aiIsTyping={aiIsTyping} handleInputSubmit={(event, input, setInput) => {
-        event.preventDefault();
-        handleInputSubmit(event, input, setInput, messages, setMessages, selectedParts, setAiIsTyping);
-      }} />
-    </div>
+    <Container>
+      <Row>
+        <Col>
+          <ChatBox
+            messages={messages}
+            aiIsTyping={aiIsTyping}
+            handleInputSubmit={(event, input, setInput) => handleInputSubmit(event, input, setInput, messages, setMessages, selectedParts, setAiIsTyping)}
+          />
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
