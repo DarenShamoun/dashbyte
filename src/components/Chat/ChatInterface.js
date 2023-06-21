@@ -20,8 +20,6 @@ function ChatInterface({ home, selectedParts, messages, setMessages }) {
     return null;
   }
 
-  console.log(messages);
-
   return (
     <div className={`${chatInterfaceStyles.chatInterface} ${home ? 'home' : ''}`} style={{ backgroundImage: `url(${logo})` }}>
       <ChatBox messages={messages} aiIsTyping={aiIsTyping} handleInputSubmit={(event, input, setInput) => {
