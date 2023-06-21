@@ -16,6 +16,9 @@ export const handleInputSubmit = async (e, input, setInput, messages, setMessage
     setMessages([...messages, newMessage]);
     setInput('');
 
+    // Get the current context (this will depend on your application)
+    const context = getCurrentContext(selectedParts);
+
     // Prepare the messages to send to the server
     const chatMessages = [
       {
@@ -23,19 +26,20 @@ export const handleInputSubmit = async (e, input, setInput, messages, setMessage
         content: 'You are a helpful IT assistant.'
       },
       {
+        role: 'system',
+        content: context // Send the context as a system message
+      },
+      {
         role: 'user',
         content: input
       }
     ];
 
-    // Get the current context (this will depend on your application)
-    const context = getCurrentContext(selectedParts);
-
     // Send the user's message to your server for processing
     const response = await fetch(process.env.REACT_APP_SERVER_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ messages: chatMessages, context: context, selectedParts: selectedParts })
+      body: JSON.stringify({ messages: chatMessages })
     });
 
     // Check for server error
@@ -55,4 +59,3 @@ export const handleInputSubmit = async (e, input, setInput, messages, setMessage
     setMessages((prevMessages) => [...prevMessages, aiMessage]);
   }
 };
-
